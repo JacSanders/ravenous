@@ -1,0 +1,24 @@
+.search-results {
+    width: 75%;
+    margin: 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 50px;
+  }
+  
+.presearch {
+    text-align: center;
+    margin-top: 10%;
+} 
+
+.presearch h1 {
+    font-size: 3rem;
+    margin: 0 15px
+}
+
+@media only screen and (max-width: 418px) {
+    .presearch h1 {
+        font-size: 2rem;
+    }
+}

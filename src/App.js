@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import BusinessList from './components/BusinessList';
+import SearchBar from './components/SearchBar';
+import { getBusinesses } from './utils/Yelp';
+import { useState } from 'react';
 
 function App() {
+
+  const [businesses, setBusinesses] = useState([]);
+
+  const handleSubmit = async (term, location, sort) => {
+    const jsonResponse = await getBusinesses(term, location, sort);
+    setBusinesses(jsonResponse);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        <SearchBar handleSubmit={handleSubmit}/>
       </header>
-    </div>
+      <BusinessList businesses = {businesses}/>
+    </>
   );
 }
 
